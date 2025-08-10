@@ -18,3 +18,7 @@ body {
 .labelHolder {
   @apply flex flex-col text-[14px];
 }
+
+.formInput {
+  @apply w-full rounded-md bg-gray-100 p-1;
+}

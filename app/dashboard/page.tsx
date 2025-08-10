@@ -17,6 +17,7 @@ export default function DashboardHome() {
     .slice(-1)[0]
     ?.toLowerCase()
     .replace(/^\w/, (c) => c.toUpperCase());
+
   return (
     <div className="px-[30px] md:px-[40px] lg:px-[60px] pb-[40px] w-full">
       <h1 className="text-[28px] md:text-[35px]">
