@@ -11,6 +11,7 @@ import {
 } from "firebase/storage";
 import CloudUpload from "@/lottiesfiles/Upload-cloud.json";
 import Lottie from "lottie-react";
+import Image from "next/image";
 
 export default function FileUploader() {
   const { user } = useAuth();
@@ -97,8 +98,12 @@ export default function FileUploader() {
           setProgress(100);
         }
       );
-    } catch (err: any) {
-      setError(err?.message ?? "Upload error");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Upload error");
+      }
     }
   };
 
@@ -161,10 +166,11 @@ export default function FileUploader() {
 
               {/* image preview */}
               {previewUrl && (
-                <img
+                <Image
+                  fill
                   src={previewUrl}
                   alt="preview"
-                  className="mt-3 max-h-48 w-auto rounded-md object-cover border"
+                  className=" mt-3 max-h-48 w-auto rounded-md object-cover border"
                 />
               )}
             </div>
